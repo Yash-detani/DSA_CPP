@@ -1,0 +1,38 @@
+class Solution {
+  public:
+    void nextPermutation(vector<int>& arr) {
+        // code here
+        int pivot = -1;
+        
+        int n = arr.size();
+        
+        int r = n-2;
+        
+        while(r>=0)
+        {
+            if(arr[r] < arr[r+1])
+            {
+                pivot = r;
+                break;
+            }
+            r--;
+        }
+        
+        if(pivot == -1)
+        {
+            reverse(arr.begin() , arr.end());
+            return;
+        }
+        
+        for(int i=n-1;i>pivot;i--)
+        {
+            if(arr[pivot] < arr[i]){
+            swap(arr[i] , arr[pivot]);
+            break;
+            }
+        }
+        
+        reverse(arr.begin() + pivot + 1 , arr.end());
+        
+    }
+};
