@@ -1,0 +1,41 @@
+//Problem
+Given an integer array citations[], where citations[i] is the number of citations a researcher received for the ith paper. The task is to find the H-index.
+
+H-Index is the largest value such that the researcher has at least H papers that have been cited at least H times.
+
+
+//Code
+class Solution {
+  public:
+    // Function to find hIndex
+    void createArray(vector<int> &citations , vector<int> &freq , int n)
+    {
+        for(int i=0;i<n;i++)
+        {
+            if(citations[i] >= n)
+            freq[n]++;
+            
+            else
+            freq[citations[i]]++;
+        }
+    }
+    
+    int hIndex(vector<int>& citations) {
+        // code here
+        int n = citations.size();
+        
+        vector<int>freq(n+1 , 0);
+        
+        createArray(citations,freq,n);
+        
+        int idx = n;
+        int sum = freq[n];
+        
+        while(sum < idx)
+        {
+            idx--;
+            sum += freq[idx];
+        }
+        return idx;
+    }
+};
