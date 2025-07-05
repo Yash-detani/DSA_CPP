@@ -1,0 +1,33 @@
+//Problem
+Given a 2D array intervals[][] of representing intervals where intervals [i] = [starti, endi ]. Return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
+
+//Code
+class Solution {
+  public:
+    int minRemoval(vector<vector<int>> &intervals) {
+        // code here
+        sort(intervals.begin() , intervals.end());
+        
+        int n = intervals.size();
+        
+        int cnt = 0;
+        
+        int end = intervals[0][1];
+        
+        for(int i=1;i<n;i++)
+        {
+            if(intervals[i][0] < end)
+            {
+                
+                cnt++;
+                end = min(end,intervals[i][1]);
+                
+            }
+            else
+            {
+                end = intervals[i][1];
+            }
+        }
+        return cnt;
+    }
+};
