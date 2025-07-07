@@ -1,0 +1,20 @@
+//Problem
+Given a sorted array, arr[] and a number target, you need to find the number of occurrences of target in arr[]. 
+
+//Code
+class Solution {
+  public:
+  
+    
+    int countFreq(vector<int>& arr, int target) {
+        // code here
+        int r = upper_bound(arr.begin() , arr.end() , target) - arr.begin();
+        
+        int l = lower_bound(arr.begin() , arr.end() , target) - arr.begin();
+        
+        return r-l;
+        
+        
+        
+    }
+};
