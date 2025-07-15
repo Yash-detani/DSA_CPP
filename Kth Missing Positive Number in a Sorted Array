@@ -1,0 +1,44 @@
+//Problem
+Given a sorted array of distinct positive integers arr[], we need to find the kth positive number that is missing from arr[].  
+
+
+//Code
+class Solution {
+  public:
+    int kthMissing(vector<int> &arr, int k) {
+        // Your code goes here
+        int n = arr.size();
+        
+        int minElement = 1;
+        
+        int maxElement = *max_element(arr.begin() , arr.end());
+        
+        int j=0;
+        
+        vector<int> v;
+        
+        for(int i=minElement; i<=maxElement; i++)
+        {
+            if(arr[j] != i)
+            {
+                v.push_back(i);
+            }
+            
+            else
+            j++;
+            
+            if(v.size() == k)
+            return v[k-1];
+            
+        }
+        
+        int last;
+        
+        if(v.size() != k)
+        {
+            last = maxElement + k - v.size();
+        }
+        
+       return last; 
+    }
+};
