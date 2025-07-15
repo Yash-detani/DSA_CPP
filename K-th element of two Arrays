@@ -1,0 +1,31 @@
+//Problem
+Given two sorted arrays a[] and b[] and an element k, the task is to find the element that would be at the kth position of the combined sorted array.
+
+//Code
+int kthElement(int *a, int n, int *b, int m, int k) {
+    // code here
+    int i=0 , j=0 , ind = 0;
+    
+    while(i<n && j<m)
+    {
+            int val = (a[i] <= b[j]) ? a[i++] : b[j++];      
+            if(ind == k-1) return val;
+            ind++;
+        }
+        
+    
+    while(i<n)
+    {
+        if(ind == k-1) return a[i];
+        ind++;
+        i++;
+    }
+    
+    while(j<m)
+    {
+        if(ind == k-1) return b[j];
+        ind++;
+        j++;
+    }
+    return 0;
+}
