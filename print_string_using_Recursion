@@ -1,0 +1,16 @@
+// Print the reverse of string using recurrsion
+
+  void solve(string str , int idx){
+
+  if(idx >= str.length()){
+    return;
+  }
+  solve(str, idx+1);
+  cout<<str[idx];
+  }
+
+void print(string str){
+  // code
+  string s = solve(str , 0);
+  cout<<s
+}
