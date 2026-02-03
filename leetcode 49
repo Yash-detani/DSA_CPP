@@ -1,0 +1,22 @@
+49. Group Anagrams
+
+// sorting and // unordered map
+
+vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> group_of_anagrams;
+
+        unordered_map<string,vector<string>> mp;
+
+        for(string s : strs){
+            string newString = s;
+            sort(newString.begin() , newString.end());
+
+            mp[newString].push_back(s);
+        }
+
+        for(auto it : mp){
+            group_of_anagrams.push_back(it.second);
+        }
+
+        return group_of_anagrams;
+    }    
