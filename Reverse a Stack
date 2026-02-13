@@ -1,0 +1,17 @@
+// In this approach Auxillary Space is O(n)
+
+void reverse(stack<int>& st){
+  int top = st.top();
+  reverse(st);
+  stack<int> temp;
+  
+  while(!st.empty()){
+    temp.push(st.top());
+    st.pop();
+    }
+  st.push(top);
+  while(!temp.empty()){
+    st.push(temp.top())
+    temp.pop();
+    }
+  }
